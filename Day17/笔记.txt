@@ -1,0 +1,34 @@
+私有化属性（在属性前面加上'__'两个下划线就是私有属性了）：__age        (年龄私有化了)
+    私有属性在类外面通过对象点不出来
+        get()和set()函数
+        类似于C++中的接口函数
+通过装饰器使私有化属性，可以就像共有的属性那样调用，------->个人感觉纯属是在脱裤子放屁，自找麻烦，直接不定义为私有不就好了
+    @property
+    def 函数名(self):                          # get
+        ……
+
+    @函数名.setter
+    def 函数名(self,args):             #set
+        ……
+装饰器必须先装饰get在装饰set（一种比喻）
+
+例如下面
+class Person:
+    def __init__(self,name,age):
+        self.__name  = name
+        self.__age = age
+    @property
+    def age(self):
+       return self.__age
+
+    @age.setter
+    def age(self,age):
+        self.__age = age
+
+
+p1 = Person('小明',19)
+print(p1.age)
+p1.age = 110
+print(p1.age)
+
+

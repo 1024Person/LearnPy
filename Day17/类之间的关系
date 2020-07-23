@@ -1,0 +1,22 @@
+has a ------------>在一个类中有另一个类（一个类包含了另一个类）
+class Computer:
+    pass
+class Book:
+    pass
+
+class Student:
+    def __init__(self,name,computer,book):
+        self.computer = computer
+        self.book = bok
+        self.name = name
+
+    def __str__(self):
+       return self.name + ' ---------'+str(self.computer)+'-------------'+str(self.book)
+
+
+Student中包含了Computer类和Book类，所以这是has a的关系，
+--------------------------------------------------------------------------------------------------------------------------------------------------
+is - a关系 ----------------->继承关系
+    要懂得什么时候用继承，继承是为了减少代码的冗余，将所有的类再次进行分类，
+    提取出同一类型中的公共方法和属性
+
