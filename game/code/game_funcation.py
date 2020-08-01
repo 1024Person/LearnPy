@@ -18,6 +18,10 @@ def check_event_keydown(event, ship, ai_setting, screen, bullets):
         ship.moving_right = True
     elif event.key == pygame.K_LEFT:
         ship.moving_left = True
+    elif event.key == pygame.K_UP:
+        ship.moving_up = True
+    elif event.key == pygame.K_DOWN:
+        ship.moving_down = True
         # 如果按下了空格键，
         # 并且屏幕中的子弹数量没有超标生成一颗子弹
     elif event.key == pygame.K_SPACE:
@@ -37,6 +41,10 @@ def check_event_keyup(event, ship):
         ship.moving_right = False
     elif event.key == pygame.K_LEFT:
         ship.moving_left = False
+    elif event.key == pygame.K_UP:
+        ship.moving_up = False
+    elif event.key == pygame.K_DOWN:
+        ship.moving_down = False
 
 
 def check_event(ship, ai_setting, screen, bullets):
@@ -50,19 +58,21 @@ def check_event(ship, ai_setting, screen, bullets):
 
             # 如果是按键响应，且按下键盘
         elif event.type == pygame.KEYDOWN:
+            print(ship.rect)
             check_event_keydown(event, ship, ai_setting, screen, bullets)
-
+            print(ship.moving_left,ship.moving_right,ship.moving_up,ship.moving_down)
             # 松开键盘
         elif event.type == pygame.KEYUP:
             check_event_keyup(event, ship)
 
 
-def update_screen(screen, setting, ship, bullets):
+def update_screen(screen, setting, ship, bullets, alien):
     screen.fill(setting.bg_color)
     ship.show_ship()
     # 在刷新之前将子弹的图片贴出来
     for bullet in bullets.sprites():
         bullet.show_bullet()
+    alien.show_alien()
     pygame.display.flip()
 
 
