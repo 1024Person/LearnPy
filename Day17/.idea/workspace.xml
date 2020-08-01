@@ -19,36 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdfe8d96-c051-4e03-8bca-c3d95e07af1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Day14/user_book.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Day15/Dome1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Day15/Itrerable.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Day15/generate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Day15/set.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Day16/object.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Day16/object1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Day16/笔记.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Day16/魔术方法.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Day17.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/is-a.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/object01.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/object02.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/同名函数.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/多态.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/多继承.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/笔记.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/类之间的关系" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/继承.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/继承2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/继承案列.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day14/book.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Day14/book.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../note_git_bash.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../note_git_bash.docx" afterDir="false" />
-    </list>
+    <list default="true" id="cdfe8d96-c051-4e03-8bca-c3d95e07af1f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,9 +178,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.多态" />
-        <item itemvalue="Python.多继承" />
-        <item itemvalue="Python.同名函数" />
-        <item itemvalue="Python.继承案列" />
         <item itemvalue="Python.继承2" />
       </list>
     </recent_temporary>
