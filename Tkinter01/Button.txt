@@ -1,0 +1,94 @@
+
+
+Button Widget options.
+
+
+activebackground=
+	What background color to use when the button is active. The default is system specific. (the option database name is activeBackground, the class is Foreground)
+	激活状态就是鼠标放在按钮上的时候，按钮就处于激活状态
+bg=
+	背景颜色
+
+
+When to use the Button Widget #（什么时候使用按钮）
+	按钮要设置回调函数，没有设置回调函数的按钮基本上没什么卵用
+
+
+**options
+Widget options.
+activebackground=（激活状态的背景颜色）
+	What background color to use when the button is active. The default is system specific. (the option database name is activeBackground, the class is Foreground)
+activeforeground=（激活状态的前景颜色）
+	What foreground color to use when the button is active. The default is system specific. (activeForeground/Background)
+anchor=（锚，指定文字出现的方向）
+Controls where in the button the text (or image) should be located. Use one of N, NE, E, SE, S, SW, W, NW, or CENTER. Default is CENTER. (anchor/Anchor)
+background=（设置背景颜色）
+The background color. The default is system specific. (background/Background)
+bg=（background）
+Same as background.
+bitmap=（要展示的位图，如果给出了image选项那么bitmap就会被忽略）
+The bitmap to display in the widget. If the image option is given, this option is ignored. (bitmap/Bitmap)
+borderwidth=（设置按钮边框的宽度，注意不是按钮的宽度）
+The width of the button border. The default is platform specific, but is usually 1 or 2 pixels. (borderWidth/BorderWidth)
+bd=（borderwidth）
+Same as borderwidth.
+command=（回调函数）
+A function or method that is called when the button is pressed. The callback can be a function, bound method, or any other callable Python object. If this option is not used, nothing will happen when the user presses the button. (command/Command)
+compound=（如果在按钮上既设置了图片还设置了文本，这个compound就是设置文字和图片是怎样组合的）
+Controls how to combine text and image in the button. By default, if an image or bitmap is given, it is drawn instead of the text. If this option is set to CENTER, the text is drawn on top of the image. If this option is set to one of BOTTOM, LEFT, RIGHT, or TOP, the image is drawn besides the text (use BOTTOM to draw the image under the text, etc.). Default is NONE. (compound/Compound)
+cursor=
+The cursor to show when the mouse is moved over the button. (cursor/Cursor)
+default=
+If set, the button is a default button. Tkinter will indicate this by drawing a platform specific indicator (usually an extra border). The default is DISABLED (no default behavior). (default/Default)
+disabledforeground=
+The color to use when the button is disabled. The background is shown in the background color. The default is system specific. (disabledForeground/DisabledForeground)
+font=
+The font to use in the button. The button can only contain text in a single font. The default is system specific. (font/Font)
+foreground=
+The color to use for text and bitmap content. The default is system specific. (foreground/Foreground)
+fg=
+Same as foreground.
+height=
+The height of the button. If the button displays text, the size is given in text units. If the button displays an image, the size is given in pixels (or screen units). If the size is omitted, it is calculated based on the button contents. (height/Height)
+highlightbackground=
+The color to use for the highlight border when the button does not have focus. The default is system specific. (highlightBackground/HighlightBackground)
+highlightcolor=
+The color to use for the highlight border when the button has focus. The default is system speciific. (highlightColor/HighlightColor)
+highlightthickness=
+The width of the highlight border. The default is system specific (usually one or two pixels). (highlightThickness/HighlightThickness)
+image=（这个image必须是一个Image或者是PhotoImage对象）
+The image to display in the widget. If specified, this takes precedence over the text and bitmap options. (image/Image)
+justify=（对齐方式）
+Defines how to align multiple lines of text. Use LEFT, RIGHT, or CENTER. Default is CENTER. (justify/Justify)
+overrelief=（鼠标移动到小部件上的值）
+Alternative relief to use when the mouse is moved over the widget. If empty, always use the relief value. (overRelief/OverRelief)
+padx=（按钮中的内容和按钮边框的水平间距）
+Extra horizontal padding between the text or image and the border. (padX/Pad)
+pady=（按钮中的内容和按钮边框的垂直间距）
+Extra vertical padding between the text or image and the border. (padY/Pad)
+relief=（按钮的样式）
+Border decoration. Usually, the button is SUNKEN when pressed, and RAISED otherwise. Other possible values are GROOVE, RIDGE, and FLAT. Default is RAISED. (relief/Relief)
+repeatdelay=
+(repeatDelay/RepeatDelay)
+repeatinterval=
+(repeatInterval/RepeatInterval)
+state=（按钮的状态）
+The button state: NORMAL, ACTIVE or DISABLED. Default is NORMAL. (state/State)
+takefocus=
+Indicates that the user can use the Tab key to move to this button. Default is an empty string, which means that the button accepts focus only if it has any keyboard bindings (default is on, in other words). (takeFocus/TakeFocus)
+text=（文本）
+The text to display in the button. The text can contain newlines. If the bitmap or image options are used, this option is ignored (unless the compound option is used). (text/Text)
+textvariable=（tk中定义的变量）
+Associates a Tkinter variable (usually a StringVar) to the button. If the variable is changed, the button text is updated. (textVariable/Variable)
+underline=（是否加上下划线）
+Which character to underline, in a text label. Default is -1, which means that no character is underlined. (underline/Underline)
+width=（宽度）
+The width of the button. If the button displays text, the size is given in text units. If the button displays an image, the size is given in pixels (or screen units). If the size is omitted, or zero, it is calculated based on the button contents. (width/Width)
+wraplength=（换行）
+Determines when a button’s text should be wrapped into multiple lines. This is given in screen units. Default is 0 (no wrapping). (wrapLength/WrapLength)
+
+flash() [#]
+Flash the button. This method redraws the button several times, alternating between active and normal appearance.
+
+invoke() [#]
+Call the command associated with the button.

@@ -1,0 +1,220 @@
+{
+    【Concepts】
+The text widget stores and displays lines of text.
+
+The text body can consist of characters, marks, and embedded windows or images. Different regions can be displayed in different styles, and you can also attach event bindings to regions.
+
+By default, you can edit the text widget’s contents using the standard keyboard and mouse bindings. To disable editing, set the state option to DISABLED (but if you do that, you’ll also disable the insert and delete methods).
+-----------------------------------
+    【Indexes】
+Indexes are used to point to positions within the text handled by the text widget. Like Python sequence indexes, text widget indexes correspond to positions between the actual characters.
+
+Tkinter provides a number of different index types:
+
+line/column (“line.column”)
+
+line end (“line.end”)
+
+INSERT
+
+CURRENT
+
+END
+
+user-defined marks
+
+user-defined tags (“tag.first”, “tag.last”)
+
+selection (SEL_FIRST, SEL_LAST)
+
+window coordinate (“@x,y”)
+
+embedded object name (window, images)
+
+expressions
+
+【Lines and columns】
+line/column indexes are the basic index type. They are given as strings consisting of a line number and column number, separated by a period. Line numbers start at 1, while column numbers start at 0, like Python sequence indexes. You can construct indexes using the following syntax:
+
+    "%d.%d" % (line, column)
+It is not an error to specify line numbers beyond the last line, or column numbers beyond the last column on a line. Such numbers correspond to the line beyond the last, or the newline character ending a line.
+
+Note that line/column indexes may look like floating point values, but it’s seldom possible to treat them as such (consider position 1.25 vs. 1.3, for example). I sometimes use 1.0 instead of “1.0” to save a few keystrokes when referring to the first character in the buffer, but that’s about it.
+
+You can use the index method to convert all other kinds of indexes to the corresponding line/column index string.
+
+Line endings
+A line end index is given as a string consisting of a line number directly followed by the text “.end”. A line end index correspond to the newline character ending a line.
+
+Named indexes
+【INSERT (or “insert”) 】
+    corresponds to the insertion cursor.
+
+【CURRENT (or “current”)】 
+    corresponds to the character closest to the mouse pointer. However, it is only updated if you move the mouse without holding down any buttons (if you do, it will not be updated until you release the button).
+
+【END (or “end”)】
+     corresponds to the position just after the last character in the buffer.
+
+【User-defined marks】
+     are named positions in the text. INSERT and CURRENT are predefined marks, but you can also create your own marks. See below for more information.
+
+【User-defined tags】
+     represent special event bindings and styles that can be assigned to ranges of text. For more information on tags, see below.
+
+You can refer to the beginning of a tag range using the syntax “tag.first” (just before the first character in the text using that tag), and “tag.last” (just after the last character using that tag).
+
+    "%s.first" % tagname
+    "%s.last" % tagname
+If the tag isn’t in use, Tkinter raises a TclError exception.
+
+The selection is a special tag named SEL (or “sel”) that corresponds to the current selection. You can use the constants SEL_FIRST and SEL_LAST to refer to the selection. If there’s no selection, Tkinter raises a TclError exception.
+
+【Coordinates】
+You can also use window coordinates as indexes. For example, in an event binding, you can find the character closest to the mouse pointer using the following syntax:
+
+    "@%d,%d" % (event.x, event.y)
+【Embedded objects】
+Embedded object name can be used to refer to windows and images embedded in the text widget. To refer to a window, simply use the corresponding Tkinter widget instance as an index. To refer to an embedded image, use the corresponding Tkinter PhotoImage or BitmapImage object.
+
+【Expressions】
+    Expressions can be used to modify any kind of index. Expressions are formed by taking the string representation of an index (use str if the index isn’t already a string), and appending one or more modifiers from the following list:
+
+    “+ count chars” moves the index forward. The index will move over newlines, but not beyond the END index.
+
+    “- count chars” moves the index backwards. The index will move over newlines, but not beyond index “1.0”.
+
+    “+ count lines” and “- count lines” moves the index full lines forward (or backwards). If possible, the index is kept in the same column, but if the new line is too short, the index is moved to the end of that line.
+
+    “linestart” moves the index to the first position on the line.
+
+    “lineend” the index to the last position on the line (the newline, that is).
+
+    “wordstart” and “wordend” moves the index to the beginning (end) of the current word. Words are sequences of letters, digits, and underline, or single non-space characters.
+
+    The keywords can be abbreviated and spaces can be omitted as long as the result is not ambigous. For example, “+ 5 chars” can be shortened to “+5c”.
+
+    For compatibility with implementations where the constants are not ordinary strings, you may wish to use str or formatting operations to create the expression string. For example, here’s how to remove the character just before the insertion cursor:
+
+    def backspace(event):
+        event.widget.delete("%s-1c" % INSERT, INSERT)
+选项：配置信息的选项：tag_config()
+【options】
+The following options are used with tag_config to specify the visual style for text using a certain tag.
+    background (color)
+The background color to use for text having this tag.
+
+Note that the bg alias cannot be used with tags; it is interpreted as bgstipple rather than background.
+
+bgstipple (bitmap)
+The name of a bitmap which is used as a stipple brush when drawing the background. Typical values are “gray12”, “gray25”, “gray50”, or “gray75”. Default is a solid brush (no bitmap).
+
+borderwidth (distance)
+The width of the text border. The default is 0 (no border).
+
+Note that the bd alias cannot be used with tags.
+
+fgstipple (bitmap)
+The name of a bitmap which is used as a stipple brush when drawing the text. Typical values are “gray12”, “gray25”, “gray50”, or “gray75”. Default is a solid brush (no bitmap).
+
+font (font)
+The font to use for text having this tag.
+
+foreground (color)
+The color to use for text having this tag.
+
+Note that the fg alias cannot be used with tags; it is interpreted as fgstipple rather than foreground.
+
+justify (constant)
+Controls text justification (the first character on a line determines how to justify the whole line). Use one of LEFT, RIGHT, or CENTER. Default is LEFT.
+
+lmargin1 (distance)
+The left margin to use for the first line in a block of text having this tag. Default is 0 (no left margin).
+
+lmargin2 (distance)
+The left margin to use for every line but the first in a block of text having this tag. Default is 0 (no left margin).
+
+offset (distance)
+Controls if the text should be offset from the baseline. Use a positive value for superscripts, a negative value for subscripts. Default is 0 (no offset).
+
+overstrike (flag)
+If non-zero, the text widget draws a line over the text that has this tag. For best results, you should use overstrike fonts instead.
+
+relief (constant)
+The border style to use for text having this tag. Use one of SUNKEN, RAISED, GROOVE, RIDGE, or FLAT. Default is FLAT (no border).
+
+rmargin (distance)
+The right margin to use for blocks of text having this tag. Default is 0 (no right margin).
+
+spacing1 (distance)
+Spacing to use above the first line in a block of text having this tag. Default is 0 (no extra spacing).
+
+spacing2 (distance)
+Spacing to use between the lines in a block of text having this tag. Default is 0 (no extra spacing).
+
+spacing3 (distance)
+Spacing to use after the last line of text in a block of text having this tag. Default is 0 (no extra spacing).
+
+tabs (string)
+underline (flag)
+If non-zero, the text widget underlines the text that has this tag. For example, you can get the standard hyperlink look with (foreground=”blue”, underline=1). For best results, you should use underlined fonts instead.
+
+wrap (constant)
+The word wrap mode to use for text having this tag. Use one of NONE, CHAR, or WORD.
+}
+
+
+
+
+概念
+text小部件存储和显示文本行。
+文本主体可以由字符、标记和嵌入的窗口或图像组成。不同的区域可以以不同的样式显示，还可以将事件绑定附加到区域。
+默认情况下，可以使用标准的键盘和鼠标绑定编辑文本小部件的内容。要禁用编辑，请将state选项设置为禁用(但如果这样做，还将禁用insert和delete方法)。
+索引
+
+
+行/列索引是基本的索引类型。它们是由行号和列号组成的字符串，用句点分隔。
+行号从1开始，列号从0开始，就像Python序列索引一样。
+可以使用以下语法构造索引:
+“%d”。%d" %(行，列)指定行号超过最后一行或列号超过一行的最后一列不是错误。
+这些数字对应于最后一行之后的行，或者结束一行的换行符。
+请注意，行/列索引可能看起来像浮点值，但很少可能这样对待它们(例如，考虑位置1.25和位置1.3)。
+我有时使用1.0而不是1.0来节省在提到缓冲区中的第一个字符时的击键次数，但仅此而已。
+您可以使用index方法将所有其他类型的索引转换为对应的行/列索引字符串。
+行结束索引是一个字符串，由行号和文本.end直接组成。
+行结束索引对应于结束行的换行符。命名索引插入(或插入)对应于插入游标。
+CURRENT(或CURRENT)对应于最接近鼠标指针的字符。
+但是，只有当您移动鼠标而不按下任何按钮时，它才会更新(如果您这样做，在您释放按钮之前，它不会更新)。
+END(或END)对应于缓冲区中最后一个字符之后的位置。
+用户定义的标记是文本中的指定位置。
+插入标记和当前标记是预定义的标记，但您也可以创建自己的标记。更多信息见下文。
+用户定义的标记表示可以分配给文本范围的特殊事件绑定和样式。
+有关标签的更多信息，请参见下面。可以使用语法标记引用标记范围的开始部分。
+first(就在使用该标记的文本中的第一个字符之前)和tag。
+last(就在使用该标记的最后一个字符之后)。
+“% s。第一个“% tagname”%s。如果标签未被使用，Tkinter会抛出一个TclError异常。
+所选内容是一个名为SEL(或SEL)的特殊标记，它与当前所选内容相对应。
+您可以使用常量SEL_FIRST和SEL_LAST来引用所选内容。
+如果没有选择，Tkinter会引发一个TclError异常。
+您还可以使用窗口坐标作为索引。
+例如，在事件绑定中，可以使用以下语法找到最接近鼠标指针的字符:"@%d，%d" % (event)。
+嵌入对象的名称可用于引用嵌入在文本小部件中的窗口和图像。
+要引用窗口，只需使用对应的Tkinter小部件实例作为索引。
+要引用嵌入的图像，使用对应的Tkinter PhotoImage或BitmapImage对象。
+表达式表达式可用于修改任何类型的索引。
+表达式是通过获取索引的字符串表示形式(如果索引不是字符串，则使用str)，并从下面的列表中附加一个或多个修饰符来形成的:+ count字符向前移动索引。索引将移动到新行上，但不会超过结束索引。-计数字符向后移动索引。
+索引将移动换行符，但不会超过索引1.0。+计数行和-计数行向前(或向后)移动索引全行。
+如果可能，索引保存在同一列中，但是如果新行太短，索引将移动到该行的末尾。
+linestart将索引移动到行上的第一个位置。
+将索引行结束到行上的最后一个位置(即换行符)。
+wordstart和wordend将索引移动到当前单词的开始(结束)。
+单词是由字母、数字、下划线或单个非空格字符组成的序列。
+只要结果不歧义，关键字可以缩写，空格可以省略。
+例如，+5字符可以缩短为+5c。
+在常量不是普通字符串的情况下，为了与实现兼容，您可能希望使用str或格式化操作来创建表达式字符串。
+例如，下面是如何删除插入光标前的字符:def backspace(event): event.widget.delete("%s-1c" % INSERT, INSERT)
+
+
+
+mark_gravity(name,LEFT)
+要创建或移动标记，请使用mark_set方法。

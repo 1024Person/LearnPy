@@ -1,0 +1,22 @@
+tk中的部件widget不能和python中的变量直接进行交互
+只有通过tkinter中定义的类Variable的子类定义的变量才能和widget进行交互
+StringVar, IntVar, DoubleVar, and BooleanVar
+如果widget中的关键字参数：textvariable被tk中定义的变量进行赋值，那么这个widget将会跟踪这个tk变量，并且实时刷新
+在定义小部件(例如Button,Enty等)的时候，要指定这个小部件的主部件（master），或者指定这个小部件的框架（frame）
+
+框架（Frame）的概念：框架就是一种特殊的容器，这种容器用来存储widget小部件
+
+当鼠标点击退出（右上角的×号）时，程序会自动调用方法quit()退出mainloop()循环
+
+在程序末尾都会隐式的调用一个root.destory()销毁窗口
+
+padx和pady控制的是按钮内容与按钮边框之间的距离
+
+
+
+
+
+译文：
+更多关于小部件引用的信息
+在第二个示例中，框架小部件存储在名为frame的本地变量中，而按钮小部件存储在两个实例属性中。这里是不是隐藏了一个严重的问题:当剩余的init__函数返回时，frame变量超出了范围会发生什么?
+只是放松;实际上没有必要保留对小部件实例的引用。Tkinter自动维护一个小部件树(通过每个小部件实例的master和children属性)，因此当应用程序的最后一个引用消失时，小部件不会消失;它必须是显性的

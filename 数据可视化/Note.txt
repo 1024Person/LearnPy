@@ -1,0 +1,30 @@
+总结一下：这个cvs和json文件读取出来不都是字符串，
+cvs中每一个数据都是以逗号隔开的
+json中所有数据都是存储在一个列表中的，
+并且从这两种文件中读取出来的内容不都是字符串
+
+- matplotlib.pyplot库，画折线图，plot(输入数据，输出数据，c……)
+plt.tick_params() -- 这个我也忘了是个啥了
+plt.savefig(filename,bbox_chaes='tight')保存文件，将plot缓冲取中的数据读走，存放在filename文件中
+    - hist = pygal.Bar()创建一个柱状图
+    - hist.x_title('')设置x轴的标题
+    - hist.y_title('')设置y轴的标题
+    - hist.x_label = [] 等于一个列表，作为x轴的刻度
+    - hist.add(‘标题’,[一个列表，要在y轴上显示的数据])
+    - hist.render_to_file(filename) 将设置的图表保存为文件，如果filename存在就覆盖掉，没有就创建文件
+plt.scatter(x,y,……)画出散点图
+plt.figure(figuersize=(10,6))设置图片大小
+plt.axes().get_xlabel().set_visible() 隐藏x坐标轴
+plt.axes().get_ylabel().set_visible() 隐藏y坐标轴
+
+csv文件和json文件
+csv和json文件中的数据都是一块一块存储的，所以用next读取的时候，每一次读取出来的都是一个数据块
+import csv
+csv文件读取的时候要用csv模块中的reader读取出来
+csv.reader(f)
+json文件读取的时候要用到json的load
+json.load(f)
+
+plt.subplot( rownum, columnnum,size )指出行数和列数，并且指出下面的画图区域在那一个区域
+plt.fill_between(y1 , y2 , c= 'red')设置在两条线之间填充颜色
+plt.figuer(num=……)同时画多个图的时候，figure设置了图的编号

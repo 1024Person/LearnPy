@@ -1,0 +1,74 @@
+选项按钮
+
+
+
+checkbutton----多选框
+
+Radiobutton----单选框
+
+
+
+在创建一个checkbutton之间必须创建一个tk变量，每一个checkbutton都需要有一个tk变量进行对应
+
+
+要设置variable的值为v（tk变量）
+CheckButton----在选项前面出现一个选框，
+列表框Listbox()这是一个列表，在Listbox中可以存放python字符串，
+Listbox的插入方法：insert（索引，内容）END表示在列表的最后插入数据
+Listbox的删除方法delete（提供一个删除区间），也可以（按值删除）提供一个数据
+ListBox也是一个按钮控件：也可以pack，并且可以设置selectmode
+	SINGLE（单选）
+	BROWSE（单选，但是和SINGLE不一样没感觉到）
+	MULTIPLE（多选）
+	EXTENDED（多选但是需要配合ctrl或者shift）
+查看选择：curselection返回的是一个列表
+
+创建一个单选复选框：
+"""
+创建单选复选框
+创建单选的话就要用到共用一个变量
+"""
+from tkinter import *
+root = Tk()
+v = IntVar()       # 共用变量v
+GRILS = [("西施",1),
+	("王昭君",2),
+	("貂蝉",3),
+	("杨玉环",4)]
+
+for gril ,val in GRILS:
+    # 说明：如果variable表示的是按钮的状态，
+    #   如果这个按钮被点中了那么v就会被用val赋值，
+    #   只有当variable = val的时候，才表示这个按钮处于激活状态
+    b = Radiobutton(root,text=gril,variable=v,value = val)
+    b.pack(anchor = W)
+mainloop()
+
+
+
+
+
+
+
+
+创建一个多选复选框：
+"""
+创建多选复选框：vriable代表的是一个按钮的状态，一般0代表未激活，1代表激活
+"""
+
+from tkinter import *
+root = Tk()
+
+v =[]
+
+GRILS = ["西施",
+	"王昭君",
+	"貂蝉",
+	"杨玉环"]
+
+for g in GRILS:
+    v.append(IntVar())
+    b = Checkbutton(root,text=g,variable = v[-1],activebackground='GREEN',activeforeground='red')
+    b.pack(anchor='w')
+
+mainloop()

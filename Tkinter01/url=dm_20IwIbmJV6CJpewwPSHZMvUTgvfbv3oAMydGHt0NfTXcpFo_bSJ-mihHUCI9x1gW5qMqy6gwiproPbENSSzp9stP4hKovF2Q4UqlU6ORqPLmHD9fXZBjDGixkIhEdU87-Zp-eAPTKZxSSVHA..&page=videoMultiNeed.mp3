@@ -1,0 +1,5 @@
+<body style="display: none"><a href="http://v.youku.com/v_show/id_XNDM5NzAxMzI5Ng==.html" id="link"></a>
+            <script>var $link=document.getElementById("link"),t=new Date().getTime(),img=window["bdv"+t]=new Image(),state;function go(){if(!state){state=true;if($link.click){$link.click()}
+            else{location.replace("http://v.youku.com/v_show/id_XNDM5NzAxMzI5Ng==.html")}}}img.onload=img.onerror=img.onabort=function(){img.onload=img.onerror=img.onabort=null;go()};
+            img.src="http://pc.videoclick.baidu.com/p.gif?pid=104&tpl=link&ifrom=videoapi&page=videoMultiNeed&u=http%3A%2F%2Fv.youku.com%2Fv_show%2Fid_XNDM5NzAxMzI5Ng%3D%3D.html&id=0&ty=0&charge=free&n=0&r="+t;setTimeout(function(){go()},3000);</script></body>
+            <noscript><META http-equiv="refresh" content="0;URL='http://v.youku.com/v_show/id_XNDM5NzAxMzI5Ng==.html'"></noscript>

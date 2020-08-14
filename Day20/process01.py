@@ -19,7 +19,7 @@ def task2(s):
     while True:
         print('-task2', '---->', os.getpid(), '---->', os.getppid())
         sleep(s)
-        n += 2
+        n += 2`
         print(n)
 
 

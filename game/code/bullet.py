@@ -23,7 +23,7 @@ class Bullet(Sprite):
     # 将子弹的位置进行更新
     def update(self):
         self.y -= self.speed
-        self.rect.y = self.y
+        self.rect.centery = self.y
 
     def show_bullet(self):
         """
