@@ -117,7 +117,7 @@ def donate_book():
         for book in books:
             book += '\n'
             stream.writelines(book)
-    print('赠书成功，好人一生平安，(✪ω✪)')
+    print('赠书成功，好人一生平安，(^ω^)')
     exit_user_book = True
 
 

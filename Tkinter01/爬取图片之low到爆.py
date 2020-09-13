@@ -24,24 +24,29 @@ def download():
 	#https://img.51miz.com/Element/00/82/63/79/67344758_E826379_030a5429.png!/quality/90/unsharp/true/compress/true/format/png/fh/630
 	#https://img-u-3.51miz.com/preview/element/00/01/12/74/E-1127411-8223B85F.jpg!/quality/90/unsharp/true/compress/true/format/jpg
 	#https://img.51miz.com/preview/templet/00/00/48/39/T-483910-DA59C81F.mp4
-	filename = re.match(r'^.+([E e]lement)|(preview)/(.+)!.+',url)
-	print(filename)
+	# https://img-u-4.51miz.com/Element/00/22/07/29/caf61e7b_E220729_3aa8d9d0.png!/quality/90/unsharp/true/compress/true/format/png
+	filename = re.match(r'(.+!).+',url)
+	print(type(filename))
 	if not filename:
 		print('下载失败')
 		return
 	if e2.get() and e2.get()!='选填':
-		filename = 'image/' + e2.get() + filename.group(1)[-4:]
+		filename = 'image/' + e2.get() + filename.group(1)[-5:-1]
 
 	else:
+		print(filename.group(1))
 		filename = filename.group(1)
+		print(type(filename))
 		index = filename.rfind('/')
-		filename = filename[index+1:]
+		filename = filename[index+1:-1]
 		filename = 'image/'+filename
 	print(filename)
 	with open(filename,'wb') as stream:
 		stream.write(read)
 	e1.delete(0,END)
 	e1.insert(0,'下载成功')
+	e2.delete(0,END)
+	e2.insert(0,'选填')
 def dele():
 	e1.delete(0,END)
 e1 = Entry(frame1,width = 20)

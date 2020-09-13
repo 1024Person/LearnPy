@@ -1,0 +1,53 @@
+创建一个Django项目的步骤：
+1. 在创建Django项目的时候需要先创建虚拟环境并且激活，
+    （ 创建虚拟环境：python -m venv ll_env（ll_env是虚拟环境的名字）
+       linux激活虚拟环境：source ll_env/bin/activate
+       windows激活虚拟环境：ll_env/Scripts/activate
+       可以发现上面的激活都是一个相对路径）
+    - 这个在pycharm中是不需要手动激活的，pycharm会自动将虚拟环境激活
+2. 在虚拟环境中下载django包，
+    pip install django
+3. 创建项目文件夹
+    python manage.py startapp projectname .
+    （projectname = 项目名称，最后面还有一个英文的句号 '.' 一定不能忘了）
+    （感觉这个就是创建了一个app的外壳，就像是辅助的那种感觉，说不出来）
+4. 创建数据库
+    python manage.py migrate
+5. 开启服务器(就是将自己的电脑作为一个服务器)：
+    python manage.py runserver
+6. 创建应用程序
+    python manage.py startapp appname
+    (创建app应用程序，
+    这句话执行完了之后，在这个虚拟环境顶层会出现一个名字为appname的文件夹)
+7. 定义模型
+    在appname文件夹下的models.py中定义模型类（继承models.Model）
+    这个模型就是在网站上要显示的各种元素
+8. 激活模型
+    在project的setting.py文件中的  INSTALLED_APPS添加
+    'appname' ,（appname 就是前面创建的应用程序的名字）
+8.迁移模型
+    将模型有关的信息存储到数据库中
+        告诉数据库该怎么样修改数据
+        python manage.py makemigrations appname（appname应用程序的名字）
+        将相关数据存到数据库中
+        python manage.py migrate
+9. 创建超级管理员
+    每一个网站都要有一个超级管理员，管理网站，
+    python manage.py createsurpersuer
+    回车之后如下：
+    Username (leave blank to use 'asus'):
+    Email address: 822731663@qq.com
+    Password:
+    Password (again):
+10. 向网站注册模型
+    Django自动在管理网站中添加了一些模型，如User 和Group ，
+    但对于我们创建的模型，必须手工进行注册。
+    在appname文件夹下面找到admin.py文件
+    在里面从models.py文件中导入相关模型
+    然后，admin.site.register(模型的类名)
+11. 至此网站的基本流程已经结束了，
+    在服务器还开着的情况下：
+        在浏览器网址栏上输入localhost:8000/admin/
+        回车之后就会出现一个登录界面
+
+
