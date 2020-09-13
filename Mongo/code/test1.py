@@ -32,6 +32,8 @@ import pymongo
 
 con = pymongo.MongoClient(host="localhost", port=27017)
 db = con.admin
+records = db.admin.find()
+
 # db.authenticate("dba", "dba")
 # db.admin.insert_one(post)
 
